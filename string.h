@@ -1,5 +1,8 @@
 //string.h
+#include <string.h>
+#include <stdio.h>
 #include <stdlib.h>
+
 
 typedef struct{
   int len; //uso

@@ -1,16 +1,15 @@
 //libreria tokens.h
-#include <stdlib.h>
-#include <stdio.h>
 #include "string.h"
 
 typedef enum {
-   TOK_NADA,
-   TOK_NUM,
-   TOK_SUMA,
-   TOK_RESTA,
-   TOK_MUL,
-   TOK_DIV,
-   TOK_EOF
+  TT_INT,
+  TT_FLOAT,
+  TT_PLUS,
+  TT_MINUS,
+  TT_MUL,
+  TT_DIV,
+  TT_LPAREN,
+  TT_RPAREN
 }TokenType;
 
 typedef struct{
@@ -27,5 +26,5 @@ typedef struct{
 Token token_init(TokenType tipo, String valor);
 TokenList tokenList_init(int cap);
 void tokenList_push(TokenList *t, Token tok);
-void tokenList_add_eof(TokenList *t);
 void tokenList_free(TokenList *t);
+void tokenList_show(TokenList t);

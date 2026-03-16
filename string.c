@@ -1,7 +1,4 @@
 //string.c implementacion
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include "string.h"
 String str_init(int cap){
   if(cap < 1) cap = 1;
@@ -56,6 +53,7 @@ String str_clone(String s){
    tmp.data = malloc(s.cap);
    if(!tmp.data){
       perror("malloc");
+      exit(1);
    }
    memcpy(tmp.data, s.data, s.len + 1);
    return tmp;

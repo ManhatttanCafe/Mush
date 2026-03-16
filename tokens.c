@@ -1,4 +1,5 @@
 #include "tokens.h"
+#include <string.h>
 
 
 Token token_init(TokenType tipo, String valor){
@@ -35,9 +36,6 @@ void tokenList_push(TokenList *t, Token tok){
    t->len++;
 }
 
-void tokenList_add_eof(TokenList *t){
-   tokenList_push(t, token_init(TOK_EOF, str_init(1)) );
-}
 
 void tokenList_free(TokenList *t){
    for(int i = 0; i < t->len; i++){
@@ -45,3 +43,17 @@ void tokenList_free(TokenList *t){
    }
    free(t->data);
 }
+
+TokenList tokenList_clone(TokenList t){
+      TokenList tmp;
+      tmp.cap = t.cap;
+      tmp.len = t.len;
+      tmp.data = malloc(t.cap * sizeof(Token));
+      if(!tmp.data){
+            perror("malloc");
+            exit(1);
+      }
+      memcpy(tmp.data, t.data, t.len); //corregir
+      return tmp;
+}
+
